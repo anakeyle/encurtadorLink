@@ -1,32 +1,78 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Home</title>
-</head>
-<body class="bg-white text-white w-full h-full">
-<div class="flex flex-col items-center justify-center bg-white rounded mt-32 p-8">
-    <div class="w-full max-w-4xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="flex flex-col justify-center items-center md:items-start text-center md:text-left">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">Título</h1>
-        <p class="text-lg text-gray-600">Subtítulo</p>
-      </div>
-      <div class="flex flex-col justify-center items-center">
-        <a href="/login"
-        class="bg-slate-900 text-white font-semibold text-lg py-2 px-4 rounded-full hover:bg-slate-600 w-48 text-center mb-4">
-        Login
-      </a>
-      <span class="mb-4 text-black">ou</span>
-      <a href="/register"
-      class="border border-blue-500 text-blue-500 font-semibold text-lg py-2 px-4 rounded-full hover:bg-blue-50 w-48 text-center">
-      Cadastro
-    </a>
-    </div>
-  </div>
-</div>
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encurtador de URL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fa7f72;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input[type="url"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size:16px;
+        }
+
+        p {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #f08080;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #f08080;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Encurtador de URL</h1>
+        <form action="/encurtar" method="POST">
+            <p><?php echo "http://localhost:8080/" . $_SESSION['shorturl']?></p>
+            <br>
+          
+        </form>
+    </div>
+</body>
 </html>

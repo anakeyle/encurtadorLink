@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
-use Core\Controller;
+use App\models\Url;
 
-class HomeController extends Controller
+class HomeController
 {
     public function index()
     {
-        $this->view('home/index');
+        echo '
+        <form method="POST" action="/encurtar">
+            <label for="url">Insira a URL:</label>
+            <input type="text" id="url" name="url" required>
+            <button type="submit">Encurtar</button>
+        </form>';
     }
 }

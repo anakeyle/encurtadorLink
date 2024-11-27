@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- shorten.php -->
+<?php
+include 'db.php';
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Login</title>
-</head>
+// Função para gerar o código curto
+function generateShortCode($length = 6) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $shortCode = '';
+    for ($i = 0; $i < $length; $i++) {
+        $shortCode .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $shortCode;
+}
 
-<body class="bg-white-900 flex items-center justify-center min-h-screen">
-  <div class="bg-gray-200 p-8 rounded-lg shadow-md w-full max-w-sm">
-    <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Login</h2>
-    <form action="/login" method="POST">
-      <div class="mb-4">
-        <label for="username" class="block text-sm font-medium text-gray-700">Usuário</label>
-        <input type="text" id="username" name="username" required
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-      </div>
-      <div class="mb-6">
-        <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
-        <input type="password" id="password" name="password" required
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-      </div>
-      <input type="submit" value="Entrar"
-        class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">
-    </form>
-  </div>
-</body>
+// Verifica se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['url'])) {
+    $url = $_POST['url'];
 
-</html>
+    // Gera um código curto
+    $shortCode = generateShortCode();
+
+    // Insere a URL e o código curto no banco de dados
+    $stmt = $db->prepare("INSERT INTO links (url, short_code) VALUES (?, ?)");
+    $stmt->execute([$url, $shortCode]);
+
+    // Redireciona para a página principal com o código curto gerado
+    header("Location: index.php?short_code=$shortCode");
+    exit;
+}
+?>
+
+

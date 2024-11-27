@@ -13,7 +13,7 @@ class Database
     {
         if (self::$connection === null) {
             try {
-                $config = require_once __DIR__ . '/../config/config.php';
+                $config = require_once __DIR__ . '/../config/config.php';	
                 self::$connection = new PDO(
                     "mysql:host={$config['host']};dbname={$config['database']}",
                     $config['user'],
