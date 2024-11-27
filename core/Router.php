@@ -21,6 +21,12 @@ class Router
                 http_response_code(404);
                 echo "Página não encontrada!";
                 exit;
+            case '/' . $_SESSION['slink']:
+                 $controllerName = 'App\controllers\UrlController';
+                 $actionName = 'longUrl';
+              break;
+             //Adicionar novas rotas aqui....
+
         }
 
         if (class_exists($controllerName)) {
