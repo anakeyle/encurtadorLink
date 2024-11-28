@@ -69,7 +69,7 @@
     <div class="container">
     <h1>Encurtador de URL</h1>
         <form action="/encurtar" method="POST">
-            <p><?php echo "http://localhost:8080/" . $_SESSION['shorturl']?></p>
+            <p><a href="<?php echo $_SESSION['long_url']?>"><?php echo "http://localhost:8080/" . $_SESSION['shorturl']?></a></p>
             <br>
           
         </form>

@@ -28,6 +28,7 @@ class UrlController extends Controller
       $stm = $db->prepare("INSERT INTO links (long_url,short_code) VALUES (:long_url, :short_code )");
       
       $_SESSION['shorturl'] = $shortCode;
+      $_SESSION['long_url'] = $url;
       $stm->bindParam(":long_url", $url);
       $stm->bindParam(":short_code", $shortCode);
      
