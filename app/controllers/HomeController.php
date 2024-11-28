@@ -15,4 +15,5 @@ class HomeController
             <button type="submit">Encurtar</button>
         </form>';
     }
+    
 }
